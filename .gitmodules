@@ -1,3 +1,6 @@
 [submodule "src/Vendors/googletest"]
 	path = src/Vendors/googletest
 	url = https://github.com/google/googletest.git
+[submodule "src/Vendors/cpp-utilities"]
+	path = src/Vendors/cpp-utilities
+	url = https://github.com/StoneHappy/cpp-utilities.git
