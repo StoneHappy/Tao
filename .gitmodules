@@ -4,3 +4,6 @@
 [submodule "src/Vendors/cpp-utilities"]
 	path = src/Vendors/cpp-utilities
 	url = https://github.com/StoneHappy/cpp-utilities.git
+[submodule "src/Vendors/glfw"]
+	path = src/Vendors/glfw
+	url = https://github.com/glfw/glfw.git

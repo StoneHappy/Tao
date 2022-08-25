@@ -1,7 +1,9 @@
 #include <iostream>
-#include "Core/test.h"
+#include <FrontEnd/index.h>
 int main(int argc, char *argv[])
 {
-    test();
-    std::cout << "hello world!" << std::endl;
+    Tao::Window window;
+    window.Setup();
+    window.Run();
+    window.Shutdown();
 }
