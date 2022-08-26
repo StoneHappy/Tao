@@ -2,8 +2,7 @@
 #include <FrontEnd/index.h>
 int main(int argc, char *argv[])
 {
-    Tao::Window window;
-    window.Setup();
-    window.Run();
-    window.Shutdown();
+    PublicSingleton<Tao::Window>::getInstance().Setup();
+    PublicSingleton<Tao::Window>::getInstance().Run();
+    PublicSingleton<Tao::Window>::getInstance().Shutdown();
 }

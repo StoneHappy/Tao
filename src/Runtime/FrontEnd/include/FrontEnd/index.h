@@ -1,9 +1,9 @@
 #pragma once
-#include <cpp-utilities/singleton.h>
+#include <cpp-utilities/singleton.hpp>
 #include <cpp-utilities/dll.h>
 namespace Tao
 {
-    class CPP_UTIL_API Window
+    class CPP_UTIL_API Window : public PublicSingleton<Window>
     {
     public:
         Window() = default;
