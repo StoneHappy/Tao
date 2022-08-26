@@ -7,9 +7,7 @@ int main(int argc, char *argv[])
 {
     thread_pool pool;
     pool.add_worker([](){
-        PublicSingleton<Tao::Window>::getInstance().Setup();
-        PublicSingleton<Tao::Window>::getInstance().Run();
-        PublicSingleton<Tao::Window>::getInstance().Shutdown();
+        PublicSingleton<Tao::GLFW_Window>::getInstance().Show();
     });
     pool.add_worker([](){
         for (int i=0; i < 5; i++) {
