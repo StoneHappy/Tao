@@ -1,10 +1,12 @@
 #include <chrono>
 #include <iostream>
-#include <FrontEnd/index.h>
+#include <Tao/Core/index.h>
+#include <Tao/FrontEnd/index.h>
 #include <cpp-utilities/thread_pool.h>
 #include <thread>
 int main(int argc, char *argv[])
 {
+#if 0
     thread_pool pool;
     pool.add_worker([](){
         PublicSingleton<Tao::GLFW_Window>::getInstance().Show();
@@ -15,4 +17,6 @@ int main(int argc, char *argv[])
             std::cout << i << std::endl;
         }
     });
+#endif
+    Tao::Core::Application app(argc, argv);
 }

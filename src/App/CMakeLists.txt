@@ -23,6 +23,7 @@ target_compile_options(${TARGET_NAME} PUBLIC "$<$<COMPILE_LANG_AND_ID:CXX,MSVC>:
 
 target_link_libraries(${TARGET_NAME}
                         Tao::FrontEnd
+                        Tao::Core
                         cpp-utilities::thread_pool
 )
 
