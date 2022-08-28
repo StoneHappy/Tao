@@ -1,5 +1,7 @@
 # Tao
-
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/StoneHappy/Tao)](https://github.com/StoneHappy/Tao/releases/latest)
+[![GitHub](https://img.shields.io/github/license/StoneHappy/Tao)](https://github.com/StoneHappy/Tao/blob/main/LICENSE)
+![GitHub Repo stars](https://img.shields.io/github/stars/StoneHappy/Tao)
 ## how to use it
 ```bash
 # clone repository and submodule
