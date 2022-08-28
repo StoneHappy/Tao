@@ -31,8 +31,6 @@ if(PROJECT_SOURCE_DIR STREQUAL PROJECT_BINARY_DIR)
 endif()
 
 set(${PROJECT_NAME}_ROOT_DIR "${CMAKE_SOURCE_DIR}")
-set(CMAKE_INSTALL_PREFIX "${PROJECT_NAME}_ROOT_DIR/bin")
-set(BINARY_ROOT_DIR "${CMAKE_INSTALL_PREFIX}/")
 # static library output dir
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${${PROJECT_NAME}_ROOT_DIR}/out/lib)
 # dynamic library output dir
@@ -41,7 +39,8 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${${PROJECT_NAME}_ROOT_DIR}/out/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${${PROJECT_NAME}_ROOT_DIR}/out/bin)
 # vendors dir
 set(VENDORS_DIR ${CMAKE_SOURCE_DIR}/src/Vendors)
-
+set(CMAKE_INSTALL_PREFIX "${${PROJECT_NAME}_ROOT_DIR}/out/install")
+set(BINARY_ROOT_DIR "${${PROJECT_NAME}_ROOT_DIR}/out/bin")
 
 add_subdirectory(src)
 

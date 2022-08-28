@@ -5,6 +5,8 @@
     ],
     "cmake.generator": "Ninja",
     "cmake.debugConfig": {
-        "args": ["--gtest_filter=ExampleTest.SimpleFirstTest"]
+        "args": [
+            // "--gtest_filter=ExampleTest.SimpleFirstTest"
+        ]
     }
 }
