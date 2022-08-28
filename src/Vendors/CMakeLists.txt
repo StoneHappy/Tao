@@ -16,6 +16,15 @@ if(NOT TARGET cpp-utilities-algorithm)
     add_subdirectory(cpp-utilities)
 endif()
 
+if(NOT TARGET lua)
+    option(LUA_BUILD_SHARED "Build lua shared lib" ON)
+    add_subdirectory(lua-cmake)
+endif()
+
+if(NOT TARGET sol2::sol2::single)
+    add_subdirectory(sol2/single)
+endif()
+
 if(NOT TARGET glfw)
     option(BUILD_SHARED_LIBS "Build shared libraries" OFF)
     option(GLFW_BUILD_EXAMPLES "Build the GLFW example programs" OFF)

@@ -10,3 +10,9 @@
 [submodule "src/Vendors/cmdline"]
 	path = src/Vendors/cmdline
 	url = https://github.com/StoneHappy/cmdline.git
+[submodule "src/Vendors/lua-cmake"]
+	path = src/Vendors/lua-cmake
+	url = https://github.com/StoneHappy/lua-cmake.git
+[submodule "src/Vendors/sol2"]
+	path = src/Vendors/sol2
+	url = https://github.com/ThePhD/sol2.git

@@ -2,6 +2,9 @@
 #include <iostream>
 #include <string>
 #include <filesystem>
+
+#define SOL_ALL_SAFETIES_ON 1
+#include <sol/sol.hpp>
 namespace Tao
 {
     namespace Core {
@@ -11,6 +14,10 @@ namespace Tao
             if (!std::filesystem::is_empty(m_LuaPath)) {
                 std::cout << m_LuaPath << std::endl;
             }
+            sol::state lua;
+            lua.open_libraries(sol::lib::base);
+
+            lua.script("print('bark bark bark')");
         }
 
 

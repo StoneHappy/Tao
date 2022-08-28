@@ -18,6 +18,8 @@ target_compile_options(${TARGET_NAME} PUBLIC "$<$<COMPILE_LANG_AND_ID:CXX,MSVC>:
 target_link_libraries(${TARGET_NAME} PUBLIC
             cpp-utilities::dll
             cmdline
+            sol2::sol2::single
+            lua
           )
 
 
