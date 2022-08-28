@@ -7,6 +7,11 @@ if(NOT TARGET gtest_main AND ENABLE_TEST)
     set_target_properties(gmock_main PROPERTIES FOLDER Vendors/googletest)
 endif()
 
+if(NOT TARGET cmdline)
+    option(CMDLINE_ENABLE_TEST "Enable cmdline test" OFF)
+    add_subdirectory(cmdline)
+endif()
+
 if(NOT TARGET cpp-utilities-algorithm)
     add_subdirectory(cpp-utilities)
 endif()

@@ -7,3 +7,6 @@
 [submodule "src/Vendors/glfw"]
 	path = src/Vendors/glfw
 	url = https://github.com/glfw/glfw.git
+[submodule "src/Vendors/cmdline"]
+	path = src/Vendors/cmdline
+	url = https://github.com/StoneHappy/cmdline.git
