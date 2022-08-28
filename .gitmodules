@@ -16,3 +16,6 @@
 [submodule "src/Vendors/sol2"]
 	path = src/Vendors/sol2
 	url = https://github.com/ThePhD/sol2.git
+[submodule "src/Vendors/doxygen-awesome-css"]
+	path = src/Vendors/doxygen-awesome-css
+	url = https://github.com/jothepro/doxygen-awesome-css.git
