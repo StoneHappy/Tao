@@ -10,7 +10,7 @@ namespace Tao
             a.add<std::string>("scriptpath", 's', R"(
                 Tao can run with lua script.
                 Lua script is natively support to c/c++, runs as efficiently as c/c++.
-            )", false);
+            )", false, "./TaoLua/");
 
             a.parse_check(argc, argv);
         }
