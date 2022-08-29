@@ -8,8 +8,10 @@
             "type": "lldb",
             "request": "launch",
             "name": "Debug",
-            "program": "${workspaceFolder}/out/bin/AppName.exe",
-            "args": ["--gtest_filter=ExampleTest.SimpleFirstTest"],
+            "program": "${workspaceFolder}/out/bin/Tao.exe",
+            "args": [
+                // "--gtest_filter=ExampleTest.SimpleFirstTest"
+            ],
             "cwd": "${workspaceFolder}/out/bin"
         }
     ]

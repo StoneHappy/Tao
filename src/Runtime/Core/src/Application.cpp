@@ -3,18 +3,23 @@
 #include <string>
 #include <filesystem>
 
-
 namespace Tao
 {
     namespace Core {
+        
         Application::Application(int argc, char** argv)
         {
+            g_runtime_global_context.startSystems(m_LuaPath);
             PraseCmdline(argc, argv);
             if (!std::filesystem::is_empty(m_LuaPath)) {
                 LoadLua(m_LuaPath);
             }
         }
 
+        Application::~Application()
+        {
+            g_runtime_global_context.shutdownSystems();
+        }
 
         void Application::PraseCmdline(int argc, char** argv)
         {
