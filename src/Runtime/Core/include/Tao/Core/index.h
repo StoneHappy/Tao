@@ -48,6 +48,10 @@ namespace Tao
         class LogSystem final
         {
         public:
+            /**
+             * @brief log level
+            
+             */
             enum class LogLevel : uint8_t
             {
                 debug,
@@ -61,6 +65,16 @@ namespace Tao
             LogSystem();
             ~LogSystem();
 
+            /**
+             * @brief log message by level
+             * ```cpp
+             * LogSystem log;
+             * log.log(LogLevel::debug, "message!");
+             * ```
+             * @tparam TARGS 
+             * @param level LogLevel::someleve
+             * @param args log message
+             */
             template<typename... TARGS>
             void log(LogLevel level, TARGS&&... args)
             {
@@ -101,9 +115,16 @@ namespace Tao
         class RuntimeGlobalContext
         {
         public:
-            // create all global systems and initialize these systems
+            /**
+             * @brief Global Runtim Constext must start very first
+             * @attention Must start very first!!!!
+             * @param lua_path config lua path
+             */
             void startSystems(const std::filesystem::path& lua_path);
-            // destroy all global systems
+            /**
+             * @brief destory global systems
+             * @attention Must shutdown at last, otherwise it will be thread unsafe!
+             */
             void shutdownSystems();
 
         public:
