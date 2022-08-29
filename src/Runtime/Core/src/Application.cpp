@@ -3,8 +3,7 @@
 #include <string>
 #include <filesystem>
 
-#define SOL_ALL_SAFETIES_ON 1
-#include <sol/sol.hpp>
+
 namespace Tao
 {
     namespace Core {
@@ -12,12 +11,8 @@ namespace Tao
         {
             PraseCmdline(argc, argv);
             if (!std::filesystem::is_empty(m_LuaPath)) {
-                std::cout << m_LuaPath << std::endl;
+                LoadLua(m_LuaPath);
             }
-            sol::state lua;
-            lua.open_libraries(sol::lib::base);
-            lua.script_file((m_LuaPath/"main.lua").string());
-            lua.script("main()");
         }
 
 
@@ -29,6 +24,13 @@ namespace Tao
             )", false, "./TaoLua/");
             cmdline_parser.parse_check(argc, argv);
             m_LuaPath = cmdline_parser.get<std::string>("scriptpath");
+        }
+
+        void Application::LoadLua(const std::filesystem::path& luapath)
+        {
+            m_Lua.open_libraries(sol::lib::base);
+            m_Lua.script_file((m_LuaPath/"main.lua").string());
+            m_Lua.script("main()");
         }
     }
 }
