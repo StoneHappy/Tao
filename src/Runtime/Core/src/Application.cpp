@@ -16,8 +16,8 @@ namespace Tao
             }
             sol::state lua;
             lua.open_libraries(sol::lib::base);
-
-            lua.script("print('bark bark bark')");
+            lua.script_file((m_LuaPath/"main.lua").string());
+            lua.script("main()");
         }
 
 
