@@ -6,8 +6,7 @@
 #include <cmdline.h>
 #include <filesystem>
 #include <spdlog/spdlog.h>
-
-#include <Tao/LosSystem//index.h>
+#include <Tao/Function/LosSystem//index.h>
 namespace Tao
 {
     namespace Core {
@@ -62,26 +61,12 @@ namespace Tao
             void shutdownSystems();
 
         public:
-            std::shared_ptr<LogSystem>      m_logger_system;
+            std::shared_ptr<Tao::Function::LogSystem>      m_logger_system;
         };
 
         extern RuntimeGlobalContext g_runtime_global_context;
     }
 }
-
-#define LOG_HELPER(LOG_LEVEL, ...) \
-    Tao::Core::g_runtime_global_context.m_logger_system->log(LOG_LEVEL, "[" + std::string(__FUNCTION__) + "] " + __VA_ARGS__);
-
-#define LOG_DEBUG(...) LOG_HELPER(Tao::Core::LogSystem::LogLevel::debug, __VA_ARGS__);
-
-#define LOG_INFO(...) LOG_HELPER(Tao::Core::LogSystem::LogLevel::info, __VA_ARGS__);
-
-#define LOG_WARN(...) LOG_HELPER(Tao::Core::LogSystem::LogLevel::warn, __VA_ARGS__);
-
-#define LOG_ERROR(...) LOG_HELPER(Tao::Core::LogSystem::LogLevel::error, __VA_ARGS__);
-
-#define LOG_FATAL(...) LOG_HELPER(Tao::Core::LogSystem::LogLevel::fatal, __VA_ARGS__);
-
 
 #ifndef NDEBUG
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)

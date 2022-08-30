@@ -1,9 +1,13 @@
 #pragma once
 #include "cpp-utilities/dll.h"
 #include <spdlog/spdlog.h>
+
 namespace Tao
 {
     namespace Core {
+        class RuntimeGlobalContext;
+    }
+    namespace Function {
         class CPP_UTIL_API LogSystem final
         {
         public:
@@ -73,19 +77,19 @@ namespace Tao
 
     }
 }
-
+extern Tao::Core::RuntimeGlobalContext g_runtime_global_context;
 #define LOG_HELPER(LOG_LEVEL, ...) \
     Tao::Core::g_runtime_global_context.m_logger_system->log(LOG_LEVEL, "[" + std::string(__FUNCTION__) + "] " + __VA_ARGS__);
 
-#define LOG_DEBUG(...) LOG_HELPER(Tao::Core::LogSystem::LogLevel::debug, __VA_ARGS__);
+#define LOG_DEBUG(...) LOG_HELPER(Tao::Function::LogSystem::LogLevel::debug, __VA_ARGS__);
 
-#define LOG_INFO(...) LOG_HELPER(Tao::Core::LogSystem::LogLevel::info, __VA_ARGS__);
+#define LOG_INFO(...) LOG_HELPER(Tao::Function::LogSystem::LogLevel::info, __VA_ARGS__);
 
-#define LOG_WARN(...) LOG_HELPER(Tao::Core::LogSystem::LogLevel::warn, __VA_ARGS__);
+#define LOG_WARN(...) LOG_HELPER(Tao::Function::LogSystem::LogLevel::warn, __VA_ARGS__);
 
-#define LOG_ERROR(...) LOG_HELPER(Tao::Core::LogSystem::LogLevel::error, __VA_ARGS__);
+#define LOG_ERROR(...) LOG_HELPER(Tao::Function::LogSystem::LogLevel::error, __VA_ARGS__);
 
-#define LOG_FATAL(...) LOG_HELPER(Tao::Core::LogSystem::LogLevel::fatal, __VA_ARGS__);
+#define LOG_FATAL(...) LOG_HELPER(Tao::Function::LogSystem::LogLevel::fatal, __VA_ARGS__);
 
 
 #ifndef NDEBUG

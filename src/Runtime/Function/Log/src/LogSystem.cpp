@@ -1,4 +1,4 @@
-#include "Tao/LosSystem/index.h"
+#include "Tao/Function/LosSystem/index.h"
 #include <iostream>
 #include <string>
 #include <filesystem>
@@ -8,7 +8,7 @@
 #include <spdlog/spdlog.h>
 namespace Tao
 {
-    namespace Core {
+    namespace Function {
         LogSystem::LogSystem()
         {
             auto console_sink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
