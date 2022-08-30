@@ -6,6 +6,8 @@
 #include <cmdline.h>
 #include <filesystem>
 #include <spdlog/spdlog.h>
+
+#include <Tao/LosSystem//index.h>
 namespace Tao
 {
     namespace Core {
@@ -44,74 +46,6 @@ namespace Tao
              */
             void LoadLua(const std::filesystem::path& luapath);
         };
-
-        class LogSystem final
-        {
-        public:
-            /**
-             * @brief log level
-            
-             */
-            enum class LogLevel : uint8_t
-            {
-                debug,
-                info,
-                warn,
-                error,
-                fatal
-            };
-
-        public:
-            LogSystem();
-            ~LogSystem();
-
-            /**
-             * @brief log message by level
-             * ```cpp
-             * LogSystem log;
-             * log.log(LogLevel::debug, "message!");
-             * ```
-             * @tparam TARGS 
-             * @param level LogLevel::someleve
-             * @param args log message
-             */
-            template<typename... TARGS>
-            void log(LogLevel level, TARGS&&... args)
-            {
-                switch (level)
-                {
-                case LogLevel::debug:
-                    m_logger->debug(std::forward<TARGS>(args)...);
-                    break;
-                case LogLevel::info:
-                    m_logger->info(std::forward<TARGS>(args)...);
-                    break;
-                case LogLevel::warn:
-                    m_logger->warn(std::forward<TARGS>(args)...);
-                    break;
-                case LogLevel::error:
-                    m_logger->error(std::forward<TARGS>(args)...);
-                    break;
-                case LogLevel::fatal:
-                    m_logger->critical(std::forward<TARGS>(args)...);
-                    fatalCallback(std::forward<TARGS>(args)...);
-                    break;
-                default:
-                    break;
-                }
-            }
-
-            template<typename... TARGS>
-            void fatalCallback(TARGS&&... args)
-            {
-                const std::string format_str = fmt::format(std::forward<TARGS>(args)...);
-                throw std::runtime_error(format_str);
-            }
-
-        private:
-            std::shared_ptr<spdlog::logger> m_logger;
-        };
-
         class RuntimeGlobalContext
         {
         public:

@@ -10,6 +10,7 @@ namespace Tao
         Application::Application(int argc, char** argv)
         {
             g_runtime_global_context.startSystems(m_LuaPath);
+            LOG_DEBUG("Application is running!");
             PraseCmdline(argc, argv);
             if (!std::filesystem::is_empty(m_LuaPath)) {
                 LoadLua(m_LuaPath);
