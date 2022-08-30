@@ -33,22 +33,6 @@ namespace Tao
             /// \return
             Component* AddComponent(std::string component_type_name);
 
-            template <class T>
-            T* AddComponent(){
-                T* component=new T();
-                rttr::type t=rttr::type::get(*component);
-                std::string component_type_name=t.get_name().to_string();
-                component->set_game_object(this);
-                if(component_type_instance_map_.find(component_type_name)==component_type_instance_map_.end()){
-                    std::vector<Component*> component_vec;
-                    component_vec.push_back(component);
-                    component_type_instance_map_[component_type_name]=component_vec;
-                }else{
-                    component_type_instance_map_[component_type_name].push_back(component);
-                }
-                return component;
-            }
-
             /// 获取组件
             /// \param component_type_name 组件类名
             /// \return
@@ -64,12 +48,12 @@ namespace Tao
             std::unordered_map<std::string,std::vector<Component*>> component_type_instance_map_;
         };
 
-        class TagComponent : Component
+        class TagComponent :public Component
         {
         public:
             TagComponent() = default;
             ~TagComponent() = default;
-            int Tag;
+            std::string Tag;
         };
     }
 }

@@ -1,4 +1,4 @@
-set(TARGET_NAME "ExampleTest")
+set(TARGET_NAME "Tao-UnitTest")
 # just for qt
 # set(CMAKE_AUTOUIC ON)
 # set(CMAKE_AUTOMOC ON)
@@ -20,8 +20,8 @@ set_target_properties(${TARGET_NAME} PROPERTIES CXX_STANDARD 17 OUTPUT_NAME ${TA
 set_target_properties(${TARGET_NAME} PROPERTIES FOLDER Test)
 
 target_link_libraries(${TARGET_NAME} 
-            ${PROJECT_NAME}Runtime
             gtest_main
+            Tao::Function::Component
 )
 
 target_include_directories(

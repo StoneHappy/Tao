@@ -23,6 +23,7 @@ target_link_libraries(${TARGET_NAME} PUBLIC
             lua
             spdlog
             Tao::Function::LogSystem
+            Tao::Function::Component
           )
 
 
