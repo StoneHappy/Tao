@@ -11,6 +11,8 @@ namespace Tao
 
         GameObject::GameObject(std::string name) {
             set_name(name);
+            auto tag = dynamic_cast<TagComponent*>(AddComponent("TagComponent"));
+            tag->Tag = name;
         }
 
         GameObject::~GameObject() {
@@ -48,11 +50,5 @@ namespace Tao
             return component_type_instance_map_[component_type_name][0];
         }
 
-        RTTR_REGISTRATION//注册反射
-        {
-            rttr::registration::class_<TagComponent>("TagComponent")
-                    .constructor<>()(rttr::policy::ctor::as_raw_ptr)
-                    .property("Tag", &TagComponent::Tag);
-        }
     }
 }
