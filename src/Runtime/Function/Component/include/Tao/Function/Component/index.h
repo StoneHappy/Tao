@@ -28,14 +28,33 @@ namespace Tao
             std::string& name(){return name_;}
             void set_name(std::string name){name_=name;}
 
-            /// 添加组件
-            /// \param component_type_name 组件类名
-            /// \return
+            /**
+             * @brief add component by component type name
+             * 
+             * 
+             * #### Example Code
+             * ```cpp
+             * GameObject gobj;
+             * gobj.AddComponent("TagComponent");
+             * ```
+             * 
+             * @param component_type_name 
+             * @return Component* Component ptr
+             */
             Component* AddComponent(std::string component_type_name);
 
-            /// 获取组件
-            /// \param component_type_name 组件类名
-            /// \return
+            /**
+             * @brief Get the Component object
+             * #### Example Code
+             * ```cpp
+             * GameObject gobj;
+             * gobj.AddComponent("TagComponent");
+             * dynamic_cast<Tao::Function::TagComponent*>(gobj->GetComponent("TagComponent"))->Tag;
+             * ```
+             * 
+             * @param component_type_name 
+             * @return Component* 
+             */
             Component* GetComponent(std::string component_type_name);
 
             /// 获取所有同名组件

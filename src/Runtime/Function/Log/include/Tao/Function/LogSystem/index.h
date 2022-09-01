@@ -30,6 +30,7 @@ namespace Tao
 
             /**
              * @brief log message by level
+             * #### Example Code
              * ```cpp
              * LogSystem log;
              * log.log(LogLevel::debug, "message!");
