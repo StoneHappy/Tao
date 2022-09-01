@@ -11,9 +11,9 @@ namespace Tao
         {
             g_runtime_global_context.startSystems(m_LuaPath);
             LOG_DEBUG("Application is running!");
-            PraseCmdline(argc, argv);
+            praseCmdline(argc, argv);
             if (!std::filesystem::is_empty(m_LuaPath)) {
-                LoadLua(m_LuaPath);
+                loadLua(m_LuaPath);
             }
         }
 
@@ -22,7 +22,7 @@ namespace Tao
             g_runtime_global_context.shutdownSystems();
         }
 
-        void Application::PraseCmdline(int argc, char** argv)
+        void Application::praseCmdline(int argc, char** argv)
         {
             cmdline_parser.add<std::string>("scriptpath", 's', R"(
                 Tao can run with lua script.
@@ -32,11 +32,9 @@ namespace Tao
             m_LuaPath = cmdline_parser.get<std::string>("scriptpath");
         }
 
-        void Application::LoadLua(const std::filesystem::path& luapath)
+        void Application::loadLua(const std::filesystem::path& luapath)
         {
-            m_Lua.open_libraries(sol::lib::base);
-            m_Lua.script_file((m_LuaPath/"main.lua").string());
-            m_Lua.script("main()");
+            
         }
     }
 }
