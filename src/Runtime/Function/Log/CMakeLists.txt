@@ -28,5 +28,4 @@ target_include_directories(
 )
 
 target_compile_definitions(${TARGET_NAME} PRIVATE "DLL_EXPORT")
-
 add_library(Tao::Function::LogSystem ALIAS ${TARGET_NAME})

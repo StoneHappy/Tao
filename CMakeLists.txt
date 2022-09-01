@@ -41,7 +41,6 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${${PROJECT_NAME}_ROOT_DIR}/out/bin)
 set(VENDORS_DIR ${CMAKE_SOURCE_DIR}/src/Vendors)
 set(CMAKE_INSTALL_PREFIX "${${PROJECT_NAME}_ROOT_DIR}/out/install")
 set(BINARY_ROOT_DIR "${${PROJECT_NAME}_ROOT_DIR}/out/bin")
-
 add_subdirectory(src)
 
 if(ENABLE_TEST)

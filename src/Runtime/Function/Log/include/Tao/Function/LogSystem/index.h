@@ -77,9 +77,13 @@ namespace Tao
 
     }
 }
+#ifdef CORE_RUNTIME_LOG
 extern Tao::Core::RuntimeGlobalContext g_runtime_global_context;
 #define LOG_HELPER(LOG_LEVEL, ...) \
     Tao::Core::g_runtime_global_context.m_logger_system->log(LOG_LEVEL, "[" + std::string(__FUNCTION__) + "] " + __VA_ARGS__);
+#else
+    #define LOG_HELPER(LOG_LEVEL, ...)
+#endif
 
 #define LOG_DEBUG(...) LOG_HELPER(Tao::Function::LogSystem::LogLevel::debug, __VA_ARGS__);
 
