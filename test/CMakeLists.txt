@@ -22,6 +22,7 @@ set_target_properties(${TARGET_NAME} PROPERTIES FOLDER Test)
 target_link_libraries(${TARGET_NAME} 
             gtest_main
             Tao::Function::Component
+            Tao::Function::ScriptSystem
 )
 
 target_include_directories(

@@ -1,4 +1,5 @@
 #include "Tao/Core/index.h"
+#include "Tao/Function/LogSystem/index.h"
 #include <iostream>
 #include <string>
 #include <filesystem>
@@ -34,7 +35,17 @@ namespace Tao
 
         void Application::loadLua(const std::filesystem::path& luapath)
         {
-            
+            if (std::filesystem::is_directory(luapath) && !std::filesystem::is_empty(m_LuaPath/"main.lua")) {
+                g_runtime_global_context.m_script_system->runScript(luapath/"main.lua");
+                g_runtime_global_context.m_script_system->runCode("main()");
+            }
+            else if(luapath.extension()==".lua") {
+                g_runtime_global_context.m_script_system->runScript(luapath);
+                g_runtime_global_context.m_script_system->runCode("main()");
+            }
+            else {
+                LOG_ERROR("Please input luafile to Tao!")
+            }
         }
     }
 }
