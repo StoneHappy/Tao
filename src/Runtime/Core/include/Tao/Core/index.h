@@ -64,3 +64,6 @@ namespace Tao
         extern RuntimeGlobalContext g_runtime_global_context;
     }
 }
+
+#define LOG_HELPER(LOG_LEVEL, ...) \
+    Tao::Core::g_runtime_global_context.m_logger_system->log(LOG_LEVEL, "[" + std::string(__FUNCTION__) + "] " + __VA_ARGS__);

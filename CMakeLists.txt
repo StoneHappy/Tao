@@ -6,8 +6,6 @@ project(Tao VERSION 0.1.0)
 option(ENABLE_TEST "Enable google test" ON)
 option(ENABLE_TAO_APP "Enable Tao application" ON)
 option(ENABLE_DOCS "Enable doxygen docs" ON)
-option(ENABLE_CORE_RUNTIME_LOG "Enable core runtime log" ON)
-
 
 # just for qt
 # set(CMAKE_AUTOUIC ON)
@@ -43,10 +41,6 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${${PROJECT_NAME}_ROOT_DIR}/out/bin)
 set(VENDORS_DIR ${CMAKE_SOURCE_DIR}/src/Vendors)
 set(CMAKE_INSTALL_PREFIX "${${PROJECT_NAME}_ROOT_DIR}/out/install")
 set(BINARY_ROOT_DIR "${${PROJECT_NAME}_ROOT_DIR}/out/bin")
-
-if(ENABLE_CORE_RUNTIME_LOG)
-  add_definitions(-DCORE_RUNTIME_LOG)
-endif()
 
 add_subdirectory(src)
 if(ENABLE_TEST)
