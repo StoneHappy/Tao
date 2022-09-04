@@ -40,6 +40,9 @@ namespace Tao
              * @param luapath main lua path
              */
             void loadLua(const std::filesystem::path& luapath);
+
+            // TODO: init project!
+            void initProject();
         };
         class RuntimeGlobalContext
         {

@@ -10,9 +10,9 @@ namespace Tao
         
         Application::Application(int argc, char** argv)
         {
+            praseCmdline(argc, argv);
             g_runtime_global_context.startSystems(m_LuaPath);
             LOG_DEBUG("Application is running!");
-            praseCmdline(argc, argv);
             if (!std::filesystem::is_empty(m_LuaPath)) {
                 loadLua(m_LuaPath);
             }
@@ -29,6 +29,7 @@ namespace Tao
                 Tao can run with lua script.
                 Lua script is natively support to c/c++, runs as efficiently as c/c++.
             )", false, "./TaoLua/");
+            cmdline_parser.add("init", '\0', "Init project at workingspace");
             cmdline_parser.parse_check(argc, argv);
             m_LuaPath = cmdline_parser.get<std::string>("scriptpath");
         }
@@ -46,6 +47,11 @@ namespace Tao
             else {
                 LOG_ERROR("Please input luafile to Tao!")
             }
+        }
+
+        void Application::initProject()
+        {
+            
         }
     }
 }
