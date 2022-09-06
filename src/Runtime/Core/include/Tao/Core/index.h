@@ -25,6 +25,7 @@ namespace Tao
         private:
             cmdline::parser cmdline_parser;
             std::filesystem::path m_LuaPath;
+            std::filesystem::path m_ExePath;
         private:
             /**
              * @brief prase Cmdline argues
@@ -39,7 +40,7 @@ namespace Tao
              * 
              * @param luapath main lua path
              */
-            void loadLua(const std::filesystem::path& luapath);
+            void loadLua();
 
             // TODO: init project!
             void initProject();
@@ -52,7 +53,7 @@ namespace Tao
              * @attention Must start very first!!!!
              * @param lua_path config lua path
              */
-            void startSystems(const std::filesystem::path& lua_path);
+            void startSystems();
             /**
              * @brief destory global systems
              * @attention Must shutdown at last, otherwise it will be thread unsafe!

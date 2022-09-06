@@ -43,5 +43,5 @@ target_include_directories(
 # )
 
 add_custom_command(TARGET ${TARGET_NAME} POST_BUILD
-COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_CURRENT_LIST_DIR}/TaoLua" "${BINARY_ROOT_DIR}/TaoLua"
+COMMAND ${CMAKE_COMMAND} -E copy_directory "${${PROJECT_NAME}_ROOT_DIR}/resources" "${BINARY_ROOT_DIR}/resources"
 )
