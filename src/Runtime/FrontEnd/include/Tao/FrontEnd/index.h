@@ -4,6 +4,7 @@
 #include <GLFW/glfw3.h>
 #include <memory>
 #include <vector>
+#include <string>
 namespace Tao
 {
     namespace FrontEnd {
@@ -18,19 +19,20 @@ namespace Tao
         {
         public:
             Window() = default;
-            virtual void Show() = 0;
+            virtual void show() = 0;
 
-            virtual void Attach(std::shared_ptr<Surface> Surface) = 0;
+            virtual void attach(std::shared_ptr<Surface> Surface) = 0;
         };
 
-        class CPP_UTIL_API GLFW_Window : public PublicSingleton<GLFW_Window>, Window
+        class CPP_UTIL_API GLFW_Window : public Window
         {
         public:
             GLFW_Window();
+            GLFW_Window(const std::string& name, uint32_t width, uint32_t height);
 
-            virtual void Show() override;
+            virtual void show() override;
 
-            virtual void Attach(std::shared_ptr<Surface> Surface) override;
+            virtual void attach(std::shared_ptr<Surface> Surface) override;
 
             virtual ~GLFW_Window();
         private:

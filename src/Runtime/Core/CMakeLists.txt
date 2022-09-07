@@ -21,6 +21,7 @@ target_link_libraries(${TARGET_NAME} PUBLIC
             Tao::Function::LogSystem
             Tao::Function::Component
             Tao::Function::ScriptSystem
+            Tao::FrontEnd
           )
 
 

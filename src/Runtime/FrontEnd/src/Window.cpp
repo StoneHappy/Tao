@@ -2,6 +2,8 @@
 #include "GLFW/glfw3.h"
 #include <iostream>
 #include <memory>
+#include <stdint.h>
+#include <string>
 namespace Tao
 {
     namespace FrontEnd {
@@ -9,23 +11,26 @@ namespace Tao
         {
             glfwInit();
             m_Window = glfwCreateWindow(200, 300, "Tao", nullptr, nullptr);
-            std::cout << "Setup..." << std::endl;
         }
 
-        void GLFW_Window::Show(){
-            std::cout << "Run..." << std::endl;
+        GLFW_Window::GLFW_Window(const std::string& name, uint32_t width, uint32_t height)
+        {
+            glfwInit();
+            m_Window = glfwCreateWindow(width, height, name.c_str(), nullptr, nullptr);
+        }
+
+        void GLFW_Window::show(){
             while (!glfwWindowShouldClose(m_Window))
             {
                 glfwPollEvents();
             }
         }
 
-        void GLFW_Window::Attach(std::shared_ptr<Surface> Surface)
+        void GLFW_Window::attach(std::shared_ptr<Surface> Surface)
         {
             
         }
         GLFW_Window::~GLFW_Window(){
-            std::cout << "Shutdown..." << std::endl;
         }
     }
 }

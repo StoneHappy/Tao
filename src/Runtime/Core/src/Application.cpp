@@ -20,6 +20,8 @@ namespace Tao
             {
                 loadLua();
             }
+
+            g_runtime_global_context.m_window->show();
         }
 
         Application::~Application()
