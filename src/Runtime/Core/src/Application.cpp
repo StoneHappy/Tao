@@ -50,7 +50,7 @@ std::ofstream mainlua(std::filesystem::current_path()/"main.lua");
                     mainlua << \
 R"(log = require("lua.log")
 function main()
-    log.trace('Tao: hello world!')
+    log.trace("Tao: hello world!")
 end
 )"               \
                     << std::endl;
@@ -60,17 +60,6 @@ end
 
             g_runtime_global_context.m_script_system->runScript(std::filesystem::current_path()/"main.lua");
             g_runtime_global_context.m_script_system->runCode("main()");
-            // if (std::filesystem::is_directory(luapath) && !std::filesystem::is_empty(m_LuaPath/"main.lua")) {
-            //     g_runtime_global_context.m_script_system->runScript(luapath/"main.lua");
-            //     g_runtime_global_context.m_script_system->runCode("main()");
-            // }
-            // else if(luapath.extension()==".lua") {
-            //     g_runtime_global_context.m_script_system->runScript(luapath);
-            //     g_runtime_global_context.m_script_system->runCode("main()");
-            // }
-            // else {
-            //     LOG_ERROR("Please input luafile to Tao!")
-            // }
         }
 
         void Application::initProject()
@@ -85,7 +74,7 @@ end
                     mainlua << \
 R"(log = require("lua.log")
 function main()
-    log.trace('Tao: hello world!')
+    log.trace("Tao: hello world!")
 end
 )"               \
                     << std::endl;
