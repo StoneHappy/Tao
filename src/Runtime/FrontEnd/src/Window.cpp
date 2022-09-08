@@ -1,36 +1,36 @@
-#include "Tao/FrontEnd/index.h"
 #include "GLFW/glfw3.h"
+#include "Tao/FrontEnd/index.h"
+#include <cstddef>
 #include <iostream>
 #include <memory>
 #include <stdint.h>
 #include <string>
+std::unordered_map<GLFWwindow*, Tao::FrontEnd::Window*> Tao::FrontEnd::Window::m_s_WINDOWS_MAP;
+
 namespace Tao
 {
     namespace FrontEnd {
-        GLFW_Window::GLFW_Window()
+        Window::Window(const Tao::FrontEnd::Context::Device& p_device, const Tao::FrontEnd::Settings::WindowSettings& p_windowSettings)
+            :m_device(p_device)
         {
-            glfwInit();
-            m_Window = glfwCreateWindow(200, 300, "Tao", nullptr, nullptr);
+            CreateGlfwWindow(p_windowSettings);
         }
 
-        GLFW_Window::GLFW_Window(const std::string& name, uint32_t width, uint32_t height)
-        {
-            glfwInit();
-            m_Window = glfwCreateWindow(width, height, name.c_str(), nullptr, nullptr);
-        }
-
-        void GLFW_Window::show(){
-            while (!glfwWindowShouldClose(m_Window))
+        void Window::show(){
+            while (!glfwWindowShouldClose(m_glfwWindow))
             {
                 glfwPollEvents();
             }
         }
 
-        void GLFW_Window::attach(std::shared_ptr<Surface> Surface)
+        void Window::CreateGlfwWindow(const Tao::FrontEnd::Settings::WindowSettings& p_windowSettings)
         {
-            
+            m_glfwWindow = glfwCreateWindow(p_windowSettings.width, p_windowSettings.height, p_windowSettings.title.c_str(), nullptr, nullptr);
         }
-        GLFW_Window::~GLFW_Window(){
+
+
+        Window::~Window(){
+            glfwDestroyWindow(m_glfwWindow);
         }
     }
 }

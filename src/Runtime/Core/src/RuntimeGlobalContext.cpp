@@ -11,7 +11,6 @@ namespace Tao
         {
             m_logger_system = std::make_shared<Tao::Function::LogSystem>();
             m_script_system = std::make_shared<Tao::Function::ScriptSystem>();
-            m_window        = std::make_shared<Tao::FrontEnd::GLFW_Window>("Tao", 1024, 768);
         }
 
         void RuntimeGlobalContext::shutdownSystems()

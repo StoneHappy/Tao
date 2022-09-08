@@ -65,7 +65,6 @@ namespace Tao
         public:
             std::shared_ptr<Tao::Function::LogSystem>           m_logger_system;
             std::shared_ptr<Tao::Function::ScriptSystem>        m_script_system;
-            std::shared_ptr<Tao::FrontEnd::GLFW_Window>         m_window;
         };
 
         extern RuntimeGlobalContext g_runtime_global_context;

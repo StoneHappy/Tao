@@ -1,43 +1,81 @@
 #pragma once
+#include "Tao/FrontEnd/index.h"
 #include <cpp-utilities/singleton.hpp>
 #include <cpp-utilities/dll.h>
 #include <GLFW/glfw3.h>
 #include <memory>
 #include <vector>
 #include <string>
+#include <unordered_map>
+
+namespace Tao::FrontEnd::Settings {
+    struct CPP_UTIL_API DeviceSettings
+    {
+        /**
+		* Specify the client API major version that the created context must be compatible with. The exact
+		* behavior of these hints depend on the requested client API
+		*/
+		uint8_t contextMajorVersion = 0;
+
+		/**
+		* Specify the client API minor version that the created context must be compatible with. The exact
+		* behavior of these hints depend on the requested client API
+		*/
+		uint8_t contextMinorVersion = 0;
+    };
+
+    struct CPP_UTIL_API WindowSettings
+    {
+		/**
+		* Title of the window (Displayed in the title bar)
+		*/
+		std::string title;
+
+		/**
+		* Width in pixels of the window
+		*/
+		uint16_t width;
+
+		/**
+		* Height in pixels of the window
+		*/
+		uint16_t height;
+    };
+}
+
+namespace Tao::FrontEnd::Context {
+    class CPP_UTIL_API Device
+    {
+    public:
+        Device(const Tao::FrontEnd::Settings::DeviceSettings& p_deviceSettings);
+        ~Device();
+
+    private:
+        bool m_isAlive = false;
+    };
+}
+
 namespace Tao
 {
     namespace FrontEnd {
-        class CPP_UTIL_API Surface
-        {
-        public:
-            Surface() = default;
-            virtual ~Surface() = default;
-        };
-
         class CPP_UTIL_API Window
         {
         public:
-            Window() = default;
-            virtual void show() = 0;
+            Window();
+            Window(const Tao::FrontEnd::Context::Device& p_device, const Tao::FrontEnd::Settings::WindowSettings& p_windowSettings);
 
-            virtual void attach(std::shared_ptr<Surface> Surface) = 0;
-        };
+            virtual void show() ;
 
-        class CPP_UTIL_API GLFW_Window : public Window
-        {
-        public:
-            GLFW_Window();
-            GLFW_Window(const std::string& name, uint32_t width, uint32_t height);
-
-            virtual void show() override;
-
-            virtual void attach(std::shared_ptr<Surface> Surface) override;
-
-            virtual ~GLFW_Window();
+            virtual ~Window();
         private:
-            std::vector<std::shared_ptr<Surface>> m_Surfaces;
-            GLFWwindow* m_Window;
+            void CreateGlfwWindow(const Tao::FrontEnd::Settings::WindowSettings& p_windowSettings);
+
+
+            const Tao::FrontEnd::Context::Device& m_device;
+            GLFWwindow* m_glfwWindow;
+            static std::unordered_map<GLFWwindow*, Tao::FrontEnd::Window*> m_s_WINDOWS_MAP;
         };
     }
 }
+
+
