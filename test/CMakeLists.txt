@@ -23,6 +23,8 @@ target_link_libraries(${TARGET_NAME}
             gtest_main
             Tao::Function::Component
             Tao::Function::ScriptSystem
+            Tao::Function::ScriptSystem
+            Tao::FrontEnd
 )
 
 target_include_directories(

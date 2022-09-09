@@ -11,6 +11,8 @@ namespace Tao::FrontEnd::Context {
         else {
             glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, p_deviceSettings.contextMajorVersion);
 		    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, p_deviceSettings.contextMinorVersion);
+            // glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, p_deviceSettings.contextMajorVersion);
+		    // glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, p_deviceSettings.contextMinorVersion);
         }
         m_isAlive = true;
     }
@@ -20,5 +22,10 @@ namespace Tao::FrontEnd::Context {
         {
             glfwTerminate();
         }
+    }
+
+    void Device::PollEvents() const
+    {
+        glfwPollEvents();
     }
 }

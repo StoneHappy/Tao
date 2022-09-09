@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
 #include <Tao/Function/Component/index.h>
 #include <Tao/Function/Script/index.h>
+#include <Tao/FrontEnd/index.h>
 TEST(TaoUnitTest, Component)
 {
 	Tao::Function::GameObject* gobj = new Tao::Function::GameObject("obj");
@@ -19,4 +20,12 @@ TEST(TaoUnitTest, ScriptSystem)
 	Tao::Function::ScriptSystem scriptSystem;
 	int rnt = scriptSystem.runCode("return 1");
 	EXPECT_EQ(rnt, 1);
+}
+
+TEST(TaoUnitTest, ProjectHub)
+{
+	EXPECT_NO_THROW(
+		Tao::FrontEnd::ProjectHub projecthub;
+		projecthub.Run();
+		);
 }

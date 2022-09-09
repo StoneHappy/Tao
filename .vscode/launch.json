@@ -7,8 +7,18 @@
         {
             "type": "lldb",
             "request": "launch",
-            "name": "Debug",
+            "name": "Debug-Tao",
             "program": "${workspaceFolder}/out/bin/Tao.exe",
+            "args": [
+                // "--gtest_filter=ExampleTest.SimpleFirstTest"
+            ],
+            "cwd": "${workspaceFolder}/out/bin"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug-Tao-UnitTest",
+            "program": "${workspaceFolder}/out/bin/Tao-UnitTest.exe",
             "args": [
                 // "--gtest_filter=ExampleTest.SimpleFirstTest"
             ],

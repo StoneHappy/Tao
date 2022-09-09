@@ -3,6 +3,7 @@
 #include <cstddef>
 #include <iostream>
 #include <memory>
+#include <stdexcept>
 #include <stdint.h>
 #include <string>
 std::unordered_map<GLFWwindow*, Tao::FrontEnd::Window*> Tao::FrontEnd::Window::m_s_WINDOWS_MAP;
@@ -16,21 +17,33 @@ namespace Tao
             CreateGlfwWindow(p_windowSettings);
         }
 
-        void Window::show(){
-            while (!glfwWindowShouldClose(m_glfwWindow))
-            {
-                glfwPollEvents();
+        void Window::CreateGlfwWindow(const Tao::FrontEnd::Settings::WindowSettings& p_windowSettings)
+        {
+            m_glfwWindow = glfwCreateWindow(200, 300, "Tao", nullptr, nullptr);
+            if (m_glfwWindow==nullptr) {
+                throw std::runtime_error("glfwwindow create error!");
             }
         }
 
-        void Window::CreateGlfwWindow(const Tao::FrontEnd::Settings::WindowSettings& p_windowSettings)
+
+        Window::~Window()
         {
-            m_glfwWindow = glfwCreateWindow(p_windowSettings.width, p_windowSettings.height, p_windowSettings.title.c_str(), nullptr, nullptr);
+            glfwDestroyWindow(m_glfwWindow);
         }
 
+        void Window::SwapBuffers()
+        {
+            glfwSwapBuffers(m_glfwWindow);
+        }
 
-        Window::~Window(){
-            glfwDestroyWindow(m_glfwWindow);
+        bool Window::ShouldClose()
+        {
+            return glfwWindowShouldClose(m_glfwWindow);
+        }
+
+        void Window::SetShouldClose(bool p_value)
+        {
+            glfwSetWindowShouldClose(m_glfwWindow, p_value);
         }
     }
 }

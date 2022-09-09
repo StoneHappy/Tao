@@ -15,13 +15,13 @@ namespace Tao::FrontEnd::Settings {
 		* Specify the client API major version that the created context must be compatible with. The exact
 		* behavior of these hints depend on the requested client API
 		*/
-		uint8_t contextMajorVersion = 0;
+		uint8_t contextMajorVersion = 3;
 
 		/**
 		* Specify the client API minor version that the created context must be compatible with. The exact
 		* behavior of these hints depend on the requested client API
 		*/
-		uint8_t contextMinorVersion = 0;
+		uint8_t contextMinorVersion = 2;
     };
 
     struct CPP_UTIL_API WindowSettings
@@ -49,7 +49,7 @@ namespace Tao::FrontEnd::Context {
     public:
         Device(const Tao::FrontEnd::Settings::DeviceSettings& p_deviceSettings);
         ~Device();
-
+        void PollEvents() const;
     private:
         bool m_isAlive = false;
     };
@@ -64,7 +64,11 @@ namespace Tao
             Window();
             Window(const Tao::FrontEnd::Context::Device& p_device, const Tao::FrontEnd::Settings::WindowSettings& p_windowSettings);
 
-            virtual void show() ;
+            void SwapBuffers();
+
+            bool ShouldClose();
+
+            void SetShouldClose(bool p_value);
 
             virtual ~Window();
         private:
@@ -74,6 +78,22 @@ namespace Tao
             const Tao::FrontEnd::Context::Device& m_device;
             GLFWwindow* m_glfwWindow;
             static std::unordered_map<GLFWwindow*, Tao::FrontEnd::Window*> m_s_WINDOWS_MAP;
+        };
+    }
+}
+
+namespace Tao {
+    namespace FrontEnd {
+        class CPP_UTIL_API ProjectHub
+        {
+        public:
+            ProjectHub();
+            ~ProjectHub()=default;
+
+            void Run();
+        private:
+            std::unique_ptr<Tao::FrontEnd::Context::Device> m_device;
+            std::unique_ptr<Tao::FrontEnd::Window> m_window;
         };
     }
 }
